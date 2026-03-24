@@ -1,4 +1,8 @@
 # COMMON APPLICATION PROPERTIES
+#
+# Quy ước profile (không đổi tên khi đổi môi trường):
+# - deploy     → EKS + Podman Compose (hostname dịch vụ, discovery-server, route http://…)
+# - local|default → IDE / chạy jar trên máy (Eureka localhost, gateway lb://)
 
 server:
   # start services on random port by default

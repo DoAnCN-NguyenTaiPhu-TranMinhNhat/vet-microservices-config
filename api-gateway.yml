@@ -59,7 +59,8 @@ eureka:
 spring:
   config:
     activate:
-      on-profile: aws
+      # Một profile cho mọi môi trường “có mạng nội bộ”: EKS + Podman Compose (SPRING_PROFILES_ACTIVE=deploy)
+      on-profile: deploy
   cloud:
     gateway:
       default-filters:

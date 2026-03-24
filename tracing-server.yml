@@ -15,7 +15,7 @@ eureka:
 spring:
   config:
     activate:
-      on-profile: aws
+      on-profile: deploy
 eureka:
   client:
     serviceUrl:
