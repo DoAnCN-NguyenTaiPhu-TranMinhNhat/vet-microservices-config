@@ -59,7 +59,7 @@ eureka:
 spring:
   config:
     activate:
-      on-profile: aws,docker
+      on-profile: aws
   cloud:
     gateway:
       default-filters:

@@ -17,7 +17,7 @@ eureka:
 spring:
   config:
     activate:
-      on-profile: aws,docker
+      on-profile: aws
 server:
   port: 8083
 eureka:

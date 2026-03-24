@@ -15,7 +15,7 @@ eureka:
 spring:
   config:
     activate:
-      on-profile: aws,docker
+      on-profile: aws
 eureka:
   instance:
     hostname: discovery-server

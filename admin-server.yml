@@ -5,7 +5,7 @@ server:
 spring:
   config:
     activate:
-      on-profile: aws,docker
+      on-profile: aws
 eureka:
   client:
     serviceUrl:
