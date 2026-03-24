@@ -12,7 +12,7 @@ spring.messages.basename: messages/messages
 spring:
   config:
     activate:
-      on-profile: local,default
+      on-profile: "local | default"
   cloud:
     gateway:
       default-filters:
