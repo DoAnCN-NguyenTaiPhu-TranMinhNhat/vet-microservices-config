@@ -2,4 +2,8 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Configuration repository for distributed Spring Petclinic application
+Configuration repository for distributed Spring Petclinic application.
+
+Profiles:
+- `aws` (and `docker`): EKS/container runtime defaults.
+- `local` / `default`: local development defaults.

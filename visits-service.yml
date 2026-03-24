@@ -1,4 +1,4 @@
-﻿spring:
+spring:
   config:
     activate:
       on-profile: default
@@ -11,7 +11,7 @@ eureka:
 spring:
   config:
     activate:
-      on-profile: docker
+      on-profile: aws,docker
 server:
   port: 8082
 eureka:

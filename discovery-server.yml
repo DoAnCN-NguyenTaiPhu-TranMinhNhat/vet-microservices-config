@@ -1,4 +1,4 @@
-﻿server:
+server:
   port: 8761
 
 eureka:
@@ -10,4 +10,13 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+spring:
+  config:
+    activate:
+      on-profile: aws,docker
+eureka:
+  instance:
+    hostname: discovery-server
 

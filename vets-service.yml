@@ -1,4 +1,4 @@
-﻿vets:
+vets:
   cache:
     ttl: 60
     heap-size: 100
@@ -17,7 +17,7 @@ eureka:
 spring:
   config:
     activate:
-      on-profile: docker
+      on-profile: aws,docker
 server:
   port: 8083
 eureka:
