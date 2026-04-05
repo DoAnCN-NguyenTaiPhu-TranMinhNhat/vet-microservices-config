@@ -1,8 +1,8 @@
 # COMMON APPLICATION PROPERTIES
 #
-# Quy ước profile (không đổi tên khi đổi môi trường):
-# - deploy     → EKS + Podman Compose (hostname dịch vụ, discovery-server, route http://…)
-# - local|default → IDE / chạy jar trên máy (Eureka localhost, gateway lb://)
+# Profile convention (keep names when switching environments):
+# - deploy        → EKS + Podman Compose (service DNS, discovery-server, http://… routes)
+# - local|default → IDE / local jar (Eureka localhost, gateway lb://)
 
 server:
   # start services on random port by default
@@ -29,6 +29,12 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: none
+  # JWT HS256: api-gateway (resource server) + customers-service (issues tokens). Set JWT_SECRET in production.
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          secret-key: ${JWT_SECRET:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef}
 
 # Spring Boot 1.5 makes actuator secure by default
 management.security.enabled: false
@@ -39,6 +45,10 @@ management.endpoints.web.exposure.include: "*"
 # Waiting issue https://github.com/spring-projects/spring-boot/issues/13042
 spring.cloud.refresh.refreshable: false
 
+# JWT lifetime (customers-service signs tokens)
+vet:
+  clinic-auth:
+    jwt-expiration-ms: ${JWT_EXPIRATION_MS:86400000}
 
 # Logging
 logging.level.org.springframework: INFO

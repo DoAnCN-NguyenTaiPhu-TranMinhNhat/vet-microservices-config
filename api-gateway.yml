@@ -5,8 +5,18 @@ server:
     mime-types: application/json,text/css,application/javascript
     min-response-size: 2048
 
-# Internationalization
-spring.messages.basename: messages/messages
+# add-mappings: false avoids default /** static handler; explicit resource handlers live in GatewayStaticResourcesConfiguration.
+# Gateway handler order -10 + RouterFunctionMapping order fix: see spring-petclinic-api-gateway.
+spring:
+  web:
+    resources:
+      add-mappings: false
+  cloud:
+    gateway:
+      handler-mapping:
+        order: -10
+  messages:
+    basename: messages/messages
 
 ---
 spring:
@@ -15,6 +25,8 @@ spring:
       on-profile: "local | default"
   cloud:
     gateway:
+      handler-mapping:
+        order: -10
       default-filters:
         - name: CircuitBreaker
           args:
@@ -59,10 +71,12 @@ eureka:
 spring:
   config:
     activate:
-      # Một profile cho mọi môi trường “có mạng nội bộ”: EKS + Podman Compose (SPRING_PROFILES_ACTIVE=deploy)
+      # Single profile for internal-network deployments: EKS + Podman Compose (SPRING_PROFILES_ACTIVE=deploy)
       on-profile: deploy
   cloud:
     gateway:
+      handler-mapping:
+        order: -10
       default-filters:
         - name: CircuitBreaker
           args:
